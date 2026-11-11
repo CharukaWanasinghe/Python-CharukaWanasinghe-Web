@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Python ඉගෙන ගමු | සිංහලෙන්</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🐍</text></svg>">
+<style>
+:root{--bg:#f7f8fc;--card:#fff;--text:#1d2433;--muted:#5b6477;--brand:#3776ab;--accent:#ffd43b;--code:#10151f;--codetx:#e6edf7;--line:#e2e6ef}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0e1320;--card:#161d2f;--text:#e8ecf5;--muted:#9aa5bd;--brand:#6fb1e6;--line:#26304a;--code:#0a0e18}}
+:root[data-theme=dark]{--bg:#0e1320;--card:#161d2f;--text:#e8ecf5;--muted:#9aa5bd;--brand:#6fb1e6;--line:#26304a;--code:#0a0e18}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;font-family:"Noto Sans Sinhala","Iskoola Pota",system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.85}
+header.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:10px 18px;background:var(--card);border-bottom:1px solid var(--line)}
+header.top b{font-size:1.1rem;flex:1}
+button{font:inherit;cursor:pointer}
+.ic{background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:4px 10px}
+.wrap{display:grid;grid-template-columns:250px 1fr;max-width:1200px;margin:auto;gap:24px;padding:20px}
+nav.side{position:sticky;top:72px;align-self:start;max-height:calc(100vh - 90px);overflow:auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+nav.side a{display:block;padding:6px 10px;border-radius:8px;color:var(--text);text-decoration:none;font-size:.93rem}
+nav.side a:hover,nav.side a.on{background:var(--brand);color:#fff}
+.hero{background:linear-gradient(135deg,var(--brand),#1c3f66);color:#fff;border-radius:18px;padding:34px 26px;margin-bottom:22px}
+.hero h1{margin:0 0 8px;font-size:2rem}.hero p{margin:0;opacity:.92}
+section{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-bottom:20px}
+h2{margin-top:0;color:var(--brand)}h3{margin-bottom:4px}
+pre{position:relative;background:var(--code);color:var(--codetx);padding:14px 16px;border-radius:10px;overflow-x:auto;line-height:1.55;font-size:.9rem}
+code{font-family:ui-monospace,Consolas,monospace}
+p code,li code,td code{background:rgba(120,140,180,.18);padding:1px 6px;border-radius:5px}
+.cp{position:absolute;top:6px;right:6px;font-size:.75rem;background:#2a3550;color:#fff;border:0;border-radius:6px;padding:2px 8px}
+.out{border-left:4px solid #3fb950;background:rgba(63,185,80,.1);padding:8px 14px;border-radius:6px;font-family:ui-monospace,monospace;white-space:pre-wrap;font-size:.9rem}
+.tip{border-left:4px solid var(--accent);background:rgba(255,212,59,.15);padding:8px 14px;border-radius:6px;margin:12px 0}
+table{border-collapse:collapse;width:100%;display:block;overflow-x:auto}td,th{border:1px solid var(--line);padding:6px 10px;text-align:left}
+.vid{position:relative;padding-top:56.25%;border-radius:12px;overflow:hidden;background:#000}
+.vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.k{color:#ff7b72}.s{color:#a5d6ff}.c{color:#8b98b0}.f{color:#d2a8ff}.n{color:#79c0ff}
+.quiz button{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 12px;border:1px solid var(--line);background:none;color:var(--text);border-radius:8px}
+.quiz .ok{background:rgba(63,185,80,.25)}.quiz .no{background:rgba(248,81,73,.25)}
+footer{text-align:center;color:var(--muted);padding:24px}
+@media(max-width:800px){.wrap{grid-template-columns:1fr}nav.side{display:none}.hero h1{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<header class="top"><b>🐍 Python සිංහලෙන්</b><button class="ic" id="theme">🌓</button></header>
+<div class="wrap">
+<nav class="side" id="toc">
+<a href="#intro">1. Python කියන්නේ මොකක්ද?</a>
+<a href="#install">2. Install කරමු</a>
+<a href="#print">3. print() සහ Comments</a>
+<a href="#vars">4. Variables</a>
+<a href="#types">5. Data Types</a>
+<a href="#ops">6. Operators</a>
+<a href="#input">7. input() සහ Strings</a>
+<a href="#if">8. if / else</a>
+<a href="#loops">9. Loops</a>
+<a href="#coll">10. List, Tuple, Dict, Set</a>
+<a href="#func">11. Functions</a>
+<a href="#oop">12. Classes (OOP)</a>
+<a href="#err">13. Errors &amp; Files</a>
+<a href="#videos">📺 Video පාඩම්</a>
+<a href="#quiz">📝 Quiz</a>
+<a href="#next">🚀 ඊළඟට?</a>
+</nav>
+<main>
+<div class="hero"><h1>Python Programming — සරලව, ගැඹුරින්</h1><p>කිසිම පෙර දැනුමක් නැතුව Python ඉගෙන ගන්න සම්පූර්ණ සිංහල මාර්ගෝපදේශය. Code උදාහරණ copy කරලා ඔබේම computer එකේ run කරලා බලන්න.</p></div>
+
+<section id="intro"><h2>1. Python කියන්නේ මොකක්ද?</h2>
+<p>Python කියන්නේ 1991 දී Guido van Rossum විසින් නිර්මාණය කළ <b>high-level programming language</b> එකක්. අපි කතා කරන භාෂාවට ළඟ, කියවන්න ලේසි syntax එකක් තියෙන නිසා මුල් වරට programming ඉගෙන ගන්නන්ට හොඳම තේරීමයි.</p>
+<h3>Python භාවිතා වෙන තැන්</h3>
+<ul><li><b>Web development</b> – Django, Flask</li><li><b>Data Science / AI / Machine Learning</b> – NumPy, Pandas, TensorFlow</li><li><b>Automation</b> – නිතර කරන වැඩ script එකකින් කරවා ගන්න</li><li><b>Games, Desktop apps, Cybersecurity</b></li></ul>
+<h3>ඇයි Python?</h3>
+<ul><li><b>Interpreted</b>: code එක පේළියෙන් පේළිය run වෙනවා. compile කරන්න ඕනේ නෑ.</li><li><b>Dynamically typed</b>: variable එකට type එක කලින් කියන්න ඕනේ නෑ.</li><li><b>Indentation</b>: අනිත් භාෂාවල <code>{ }</code> වෙනුවට Python වල space (ඉඩ) වලින් code block එක හඳුන්වනවා.</li></ul></section>
+
+<section id="install"><h2>2. Install කරමු</h2>
+<ol><li><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org/downloads</a> එකෙන් latest version එක download කරන්න.</li><li>Windows නම් install කරද්දී <b>"Add Python to PATH"</b> tick කරන්න (ඉතා වැදගත්).</li><li>Terminal / CMD එකේ පරීක්ෂා කරන්න:</li></ol>
+<pre><code>python --version</code></pre>
+<p>Editor එකක් ලෙස <b>VS Code</b> හෝ <b>PyCharm</b> පාවිච්චි කරන්න. ෆයිල් එකක් <code>hello.py</code> ලෙස save කරලා මෙහෙම run කරන්න:</p>
+<pre><code>python hello.py</code></pre></section>
+
+<section id="print"><h2>3. print() සහ Comments</h2>
+<p><code>print()</code> කියන්නේ screen එකට දේවල් පෙන්වන function එක.</p>
+<pre><code>print("ආයුබෝවන් Python!")
+print("2 + 3 =", 2 + 3)
+
+# මේක comment එකක්. Python මේක run කරන්නේ නෑ
+"""
+පේළි කිහිපයක
+comment එකක්
+"""</code></pre>
+<div class="out">ආයුබෝවන් Python!
+2 + 3 = 5</div></section>
+
+<section id="vars"><h2>4. Variables</h2>
+<p>Variable එකක් කියන්නේ දත්තයක් තබා ගන්න <b>නම දැමූ පෙට්ටියක්</b>. <code>=</code> වලින් අගය දෙනවා.</p>
+<pre><code>name = "කමල්"
+age = 17
+height = 5.7
+print(name, age, height)
+
+a, b = 10, 20      # එකවර assign කිරීම
+a, b = b, a        # swap කිරීම
+print(a, b)</code></pre>
+<div class="out">කමල් 17 5.7
+20 10</div>
+<div class="tip"><b>නම් දැමීමේ නීති:</b> අකුරකින් හෝ <code>_</code> වලින් පටන් ගන්න ඕනේ; space බෑ; <code>Age</code> සහ <code>age</code> වෙනස් variables; <code>if</code>, <code>for</code> වගේ keywords පාවිච්චි කරන්න බෑ. හොඳ පුරුද්ද: <code>student_name</code> (snake_case).</div></section>
+
+<section id="types"><h2>5. Data Types</h2>
+<table><tr><th>Type</th><th>උදාහරණය</th><th>විස්තරය</th></tr>
+<tr><td><code>int</code></td><td>10, -5</td><td>පූර්ණ සංඛ්‍යා</td></tr>
+<tr><td><code>float</code></td><td>3.14</td><td>දශම සංඛ්‍යා</td></tr>
+<tr><td><code>str</code></td><td>"hello"</td><td>අකුරු / text</td></tr>
+<tr><td><code>bool</code></td><td>True, False</td><td>ඔව් / නැහැ</td></tr>
+<tr><td><code>list</code></td><td>[1,2,3]</td><td>වෙනස් කළ හැකි ලැයිස්තුව</td></tr>
+<tr><td><code>dict</code></td><td>{"a":1}</td><td>key-value යුගල</td></tr></table>
+<pre><code>x = 5
+print(type(x))          # &lt;class 'int'&gt;
+print(int("42") + 1)    # 43  (str → int)
+print(str(3.5) + "kg")  # 3.5kg
+print(float(7))         # 7.0
+print(bool(0), bool("a"))  # False True</code></pre>
+<p>මෙය <b>Type Casting</b> කියනවා. <code>input()</code> එකෙන් එන්නේ සැමවිටම <code>str</code> නිසා ගණනයකට කලින් <code>int()</code> කරන්න ඕනේ.</p></section>
+
+<section id="ops"><h2>6. Operators</h2>
+<pre><code>print(7 + 2, 7 - 2, 7 * 2)   # 9 5 14
+print(7 / 2)    # 3.5  (සාමාන්‍ය බෙදීම)
+print(7 // 2)   # 3    (පූර්ණ බෙදීම)
+print(7 % 2)    # 1    (ඉතිරිය)
+print(2 ** 5)   # 32   (බලය)
+
+print(5 &gt; 3, 5 == 5, 5 != 5)    # True True False
+print(5 &gt; 3 and 2 &gt; 4)          # False
+print(5 &gt; 3 or 2 &gt; 4)           # True
+print(not True)                 # False
+
+n = 10
+n += 5          # n = n + 5
+print(n)        # 15</code></pre>
+<div class="tip"><code>=</code> කියන්නේ assign කිරීම; <code>==</code> කියන්නේ සමානදැයි පරීක්ෂාව. මේක මුලදී බොහෝ දෙනා ව්‍යාකූල වෙනවා.</div></section>
+
+<section id="input"><h2>7. input() සහ Strings</h2>
+<pre><code>name = input("ඔබේ නම? ")
+age = int(input("වයස? "))
+print(f"{name}, ඔයා ලබන අවුරුද්දේ {age + 1} වෙනවා")</code></pre>
+<p><code>f"..."</code> කියන්නේ <b>f-string</b>; <code>{ }</code> ඇතුළේ variable හෝ ගණනයක් දාන්න පුළුවන්.</p>
+<h3>String methods</h3>
+<pre><code>s = "Python Sinhala"
+print(len(s))          # 14
+print(s.upper())       # PYTHON SINHALA
+print(s.lower())       # python sinhala
+print(s[0], s[-1])     # P a   (index)
+print(s[0:6])          # Python (slicing)
+print(s.replace("Sinhala", "Class"))
+print(s.split(" "))    # ['Python', 'Sinhala']
+print("Py" in s)       # True</code></pre>
+<p>Index එක <b>0</b> න් පටන් ගන්නවා; <code>-1</code> කියන්නේ අන්තිම අකුර.</p></section>
+
+<section id="if"><h2>8. if / else (තීරණ ගැනීම)</h2>
+<pre><code>marks = 72
+if marks &gt;= 75:
+    print("A")
+elif marks &gt;= 50:
+    print("Pass")
+else:
+    print("Fail")</code></pre>
+<div class="out">Pass</div>
+<p>⚠️ <code>:</code> සහ <b>indentation (space 4ක්)</b> අනිවාර්යයි. නැත්නම් <code>IndentationError</code> එනවා.</p>
+<pre><code>age = 20
+has_id = True
+if age &gt;= 18 and has_id:
+    print("ඇතුළු වෙන්න පුළුවන්")</code></pre></section>
+
+<section id="loops"><h2>9. Loops (පුනරාවර්තන)</h2>
+<h3>for loop</h3>
+<pre><code>for i in range(1, 6):      # 1 සිට 5 දක්වා
+    print(i, end=" ")
+# 1 2 3 4 5
+
+for ch in "abc":
+    print(ch)</code></pre>
+<h3>while loop</h3>
+<pre><code>count = 3
+while count &gt; 0:
+    print(count)
+    count -= 1
+print("අවසන්!")</code></pre>
+<h3>break සහ continue</h3>
+<pre><code>for n in range(1, 10):
+    if n == 3: continue   # මේ වටය මග හරින්න
+    if n == 6: break      # loop එක නවත්වන්න
+    print(n)              # 1 2 4 5</code></pre>
+<div class="tip"><b>ප්‍රායෝගික:</b> Multiplication table
+<pre><code>n = 7
+for i in range(1, 11):
+    print(f"{n} x {i} = {n*i}")</code></pre></div></section>
+
+<section id="coll"><h2>10. List, Tuple, Dictionary, Set</h2>
+<h3>List – වෙනස් කළ හැක</h3>
+<pre><code>fruits = ["ඇපල්", "කෙසෙල්", "දොඩම්"]
+fruits.append("අඹ")      # අගට එකතු
+fruits.remove("කෙසෙල්")  # ඉවත් කිරීම
+fruits[0] = "පේර"        # වෙනස් කිරීම
+print(fruits, len(fruits))
+nums = [5, 2, 9]
+nums.sort()
+print(nums, sum(nums), max(nums))
+
+squares = [x*x for x in range(5)]   # List comprehension
+print(squares)    # [0, 1, 4, 9, 16]</code></pre>
+<h3>Tuple – වෙනස් කළ නොහැක</h3>
+<pre><code>point = (10, 20)
+x, y = point</code></pre>
+<h3>Dictionary – key : value</h3>
+<pre><code>student = {"name": "නිමල්", "age": 16}
+student["grade"] = 11
+print(student["name"])
+for key, value in student.items():
+    print(key, "=", value)</code></pre>
+<h3>Set – අනුපිටපත් නැති</h3>
+<pre><code>s = {1, 2, 2, 3, 3}
+print(s)    # {1, 2, 3}</code></pre></section>
+
+<section id="func"><h2>11. Functions</h2>
+<p>Function එකක් කියන්නේ නැවත නැවත භාවිතා කළ හැකි <b>code කොටසක්</b>. <code>def</code> වලින් හදනවා.</p>
+<pre><code>def greet(name, msg="ආයුබෝවන්"):
+    return f"{msg} {name}!"
+
+print(greet("සුනිල්"))
+print(greet("සුනිල්", "සුභ උදෑසනක්"))
+
+def area(w, h):
+    return w * h
+
+print(area(4, 5))   # 20
+
+square = lambda x: x * x   # lambda (කෙටි function)
+print(square(6))           # 36</code></pre>
+<ul><li><b>Parameter</b>: function එක ඇතුළේ ඉල්ලන අගයන්</li><li><b>return</b>: ප්‍රතිඵලය ආපසු දෙනවා (print එකට වඩා වෙනස්)</li><li><b>Default value</b>: <code>msg="ආයුබෝවන්"</code></li></ul>
+<h3>Modules</h3>
+<pre><code>import math, random
+print(math.sqrt(16))        # 4.0
+print(random.randint(1, 6)) # දාදු කැටයක්</code></pre></section>
+
+<section id="oop"><h2>12. Classes සහ Objects (OOP)</h2>
+<p>Class එක කියන්නේ <b>බ්ලූප්‍රින්ට් එකක්</b> (ගෙයක සැලැස්ම වගේ); Object එක කියන්නේ ඒකෙන් හදන ඇත්ත ගෙය.</p>
+<pre><code>class Student:
+    def __init__(self, name, marks):   # constructor
+        self.name = name
+        self.marks = marks
+
+    def grade(self):
+        return "Pass" if self.marks &gt;= 50 else "Fail"
+
+s1 = Student("අමාලි", 82)
+s2 = Student("රවී", 40)
+print(s1.name, s1.grade())   # අමාලි Pass
+print(s2.name, s2.grade())   # රවී Fail
+
+class Teacher(Student):      # Inheritance (උරුමය)
+    pass</code></pre>
+<p><code>self</code> කියන්නේ දැනට පවතින object එකම. <code>__init__</code> object එක හදද්දී ස්වයංක්‍රීයව run වෙනවා.</p></section>
+
+<section id="err"><h2>13. Error Handling සහ Files</h2>
+<pre><code>try:
+    n = int(input("සංඛ්‍යාවක්: "))
+    print(10 / n)
+except ValueError:
+    print("සංඛ්‍යාවක් ඇතුල් කරන්න!")
+except ZeroDivisionError:
+    print("බිංදුවෙන් බෙදන්න බෑ!")
+finally:
+    print("අවසානයි")</code></pre>
+<h3>File කියවීම / ලිවීම</h3>
+<pre><code>with open("notes.txt", "w", encoding="utf-8") as f:
+    f.write("Python ලේසියි!\n")
+
+with open("notes.txt", "r", encoding="utf-8") as f:
+    print(f.read())</code></pre>
+<p><code>with</code> පාවිච්චි කළොත් file එක ස්වයංක්‍රීයව වැසෙනවා.</p></section>
+
+<section id="videos"><h2>📺 Video පාඩම් (Playlist)</h2>
+<p>පහත playlist එකේ ICT පාඩම් 13ක් තියෙනවා. ඉහළ දකුණේ ලැයිස්තු අයිකනයෙන් වීඩියෝ මාරු කරන්න පුළුවන්.</p>
+<div class="vid"><iframe src="https://www.youtube.com/embed/videoseries?list=PLNKgy4u4JLOQvZTCpLclCDnKQoWHouYc3" title="ICT playlist" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>
+<p><a href="https://www.youtube.com/playlist?list=PLNKgy4u4JLOQvZTCpLclCDnKQoWHouYc3" target="_blank" rel="noopener">YouTube එකේ playlist එක විවෘත කරන්න ↗</a></p></section>
+
+<section id="quiz"><h2>📝 ඉක්මන් Quiz</h2><div class="quiz" id="qz"></div><p id="score"></p></section>
+
+<section id="next"><h2>🚀 ඊළඟට මොකද කරන්නේ?</h2>
+<ul><li>දිනපතා කුඩා project එකක් කරන්න: Calculator, Number guessing game, To-do list.</li><li><a href="https://docs.python.org/3/" target="_blank" rel="noopener">Python official docs</a> කියවන්න පුරුදු වෙන්න.</li><li>Flask/Django (web), Pandas (data), Tkinter (desktop) ඉගෙන ගන්න.</li><li>Code එක තනිවම ලියන්න; error එකක් ආවොත් message එක කියවන්න, එයම ඔබේ ගුරුවරයා!</li></ul></section>
+</main></div>
+<footer>© 2026 Python සිංහලෙන් • HTML, CSS, JS වලින් නිර්මිතයි</footer>
+
+<script>
+// Theme toggle
+const root=document.documentElement;
+document.getElementById('theme').onclick=()=>{
+  const dark=getComputedStyle(root).getPropertyValue('--bg').trim()==='#0e1320';
+  root.dataset.theme=dark?'light':'dark';
+};
+// Copy buttons on code blocks
+document.querySelectorAll('pre').forEach(p=>{
+  const b=document.createElement('button');b.className='cp';b.textContent='Copy';
+  b.onclick=()=>{navigator.clipboard.writeText(p.querySelector('code').innerText).then(()=>{b.textContent='✓';setTimeout(()=>b.textContent='Copy',1200)})};
+  p.appendChild(b);
+});
+// Active nav link on scroll
+const links=[...document.querySelectorAll('#toc a')];
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id))}
+}),{rootMargin:'-30% 0px -60% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>io.observe(s));
+// Quiz
+const Q=[
+ ["print(7 // 2) ප්‍රතිඵලය?",["3.5","3","4"],1],
+ ["List එකකට අගයක් එකතු කරන method එක?",["add()","append()","push()"],1],
+ ["Function එකකින් අගයක් ආපසු දෙන්නේ?",["return","print","give"],0],
+ ["Python වල code block එකක් හඳුන්වන්නේ?",["{ }","Indentation","begin/end"],1],
+ ["input() එකෙන් ලැබෙන data type එක?",["int","float","str"],2]
+];
+let sc=0,done=0;const qz=document.getElementById('qz');
+Q.forEach(([q,o,a],i)=>{
+  const d=document.createElement('div');d.innerHTML=`<p><b>${i+1}. ${q}</b></p>`;
+  o.forEach((t,j)=>{const b=document.createElement('button');b.textContent=t;
+    b.onclick=()=>{if(d.dataset.d)return;d.dataset.d=1;done++;
+      if(j===a){b.classList.add('ok');sc++}else{b.classList.add('no');d.children[a+1].classList.add('ok')}
+      if(done===Q.length)document.getElementById('score').textContent=`ඔබේ ලකුණු: ${sc} / ${Q.length} ${sc===Q.length?'🎉':'👍'}`};
+    d.appendChild(b)});
+  qz.appendChild(d);
+});
+</script>
+</body>
+</html>
